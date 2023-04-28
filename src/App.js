@@ -1,25 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './componentes/Header';
+import FormularioTareas from './componentes/FormularioTareas';
+import ListaTareas from "./componentes/ListaTareas";
+import { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	const [tareas, cambiarTareas] = useState(
+		[
+			{
+				id: 1,
+				texto: 'Lavar la ropa',
+				completada: true
+			},
+			{
+				id: 2,
+				texto: 'Grabar tutorial',
+				completada: false
+			}
+		]
+	);
+
+	const [mostrarCompletadas, cambiarMostrarCompletadas] = useState(false);
+
+
+
+	return (
+		<div className='contenedor'>
+				<Header 
+					mostrarCompletadas={mostrarCompletadas}
+					cambiarMostrarCompletadas={cambiarMostrarCompletadas}
+				/>
+				<FormularioTareas 
+					tareas={tareas} 
+					cambiarTareas={cambiarTareas} 
+				/>
+				<ListaTareas 
+					tareas={tareas} 
+					cambiarTareas={cambiarTareas} 
+					mostrarCompletadas={mostrarCompletadas}
+				/>
+		</div>
+	);
 }
 
 export default App;
