@@ -19,7 +19,7 @@ const FormularioTareas = ({ tareas, cambiarTareas }) => {
         cambiarInputTarea(e.target.value);
     }
 
-    console.log(tareas);
+    // console.log(tareas);
 
     return (
         <form className="formulario-tareas">
